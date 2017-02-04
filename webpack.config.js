@@ -13,7 +13,7 @@ module.exports = {
   },
 
   resolve: {
-    modulesDirectories: [ "node_modules", __dirname + "/web/static/js" ]
+    modules: [ "node_modules", __dirname + "/web/static/js" ]
   },
 
   module: {
@@ -25,18 +25,20 @@ module.exports = {
         presets: ["es2015", "react"]
       }
     },
-    // {
-    //   test: /\.css$/,
-    //   loader: ExtractTextPlugin.extract("style", "css")
-    // },
-    { test: /\.css$/, exclude: /node_modules/, loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]' },
+
     {
-      test: /\.svg$/, loader: 'babel?presets[]=es2015,presets[]=react!svg-react'
+      test: /\.css$/,
+      exclude: /node_modules/,
+      loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+    },
+
+    {
+      test: /\.svg$/,
+      loader: 'babel-loader?presets[]=es2015,presets[]=react!svg-react-loader'
     }]
   },
 
   plugins: [
-    new ExtractTextPlugin("css/app.css"),
     new CopyWebpackPlugin([{ from: "./web/static/assets" }])
   ]
 };
