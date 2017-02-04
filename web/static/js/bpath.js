@@ -1,3 +1,0 @@
-function bpath() {
-  alert('bpath');
-}
