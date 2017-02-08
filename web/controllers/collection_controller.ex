@@ -27,7 +27,7 @@ defmodule Flashback.CollectionController do
   def show(conn, %{"id" => id}) do
     # collection = Repo.get!(Collection, id)
     # render(conn, "show.json", collection: collection)
-    json conn, %{id: id}
+    json conn, %{id: String.to_integer(id)}
   end
 
   # def update(conn, %{"id" => id, "collection" => collection_params}) do
