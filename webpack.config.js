@@ -3,6 +3,7 @@ var CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: [
+    "whatwg-fetch",
     "./web/static/css/app.css",
     "./web/static/js/app.js"
   ],

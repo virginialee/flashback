@@ -18,7 +18,7 @@ defmodule Flashback.CollectionControllerTest do
     # collection = Repo.insert! %Collection{}
     id = 123
     conn = get conn, collection_path(conn, :show, id)
-    assert json_response(conn, 200) == %{"id" => id}
+    assert json_response(conn, 200) == %{"cards" => ["zero", "one", "two", "three", "four"], "collection_id" => 123}
   end
 
   # test "renders page not found when id is nonexistent", %{conn: conn} do

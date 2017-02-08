@@ -21,8 +21,26 @@
 // import socket from "./socket"
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'whatwg-fetch';
 import FlashCard from './components/flashCard';
 
 let container = document.getElementById('content');
-let cards = [ 'one', 'two', 'three', 'four' ];
-ReactDOM.render(<FlashCard cards={cards} />, container);
+// let cards = [ 'one', 'two', 'three', 'four' ];
+
+export function renderApp(cards) {
+  ReactDOM.render(<FlashCard cards={cards} />, container);
+}
+
+export function retrieveData() {
+  fetch('/api/collection/1')
+    .then(resp => resp.json())
+    .then(data => {
+      // console.log('parsed json', data);
+      // console.log('id: ', data['collection_id']);
+      // console.log('cards: ', data['cards']);
+      renderApp(data['cards']);
+    });
+}
+
+renderApp([]);
+retrieveData();
